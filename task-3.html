@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Напишем функцию, которая будет находить факториал числа с
+    использованием рекурсии: Примеры вызова функции
+    console.log(factorial(5)); // выводит 120 (5 _ 4 _ 3 _ 2 _ 1)
+    console.log(factorial(0)); // выводит 1 (по определению
+    факториала) -->
+    <script>
+      const factorial = (n) => (n <= 1 ? 1 : n * factorial(n - 1));
+      console.log(factorial(5));
+      console.log(factorial(8));
+    </script>
+  </body>
+</html>
