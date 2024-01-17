@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Напишите рекурсивную функцию findElementByClass, которая принимает
+   корневой элемент дерева DOM и название класса в качестве
+   аргументов и возвращает первый найденный элемент с указанным
+   классом в этом дереве.Пример:  
+   const rootElement = document.getElementById('root');
+   const targetElement = findElementByClass(rootElement, 'my-class');
+   console.log(targetElement); -->
+    <div class="wrap" id="root">
+      <div class="box-1">
+        <div class="content-1"></div>
+        <div class="content-2">
+          <div class="my-class"></div>
+        </div>
+        <div class="content-3"></div>
+      </div>
+      <div class="box-2">
+        <ul class="ul-1">
+          <li class="li-1"></li>
+          <li class="li-2"></li>
+          <li class="li-3"></li>
+          <li class="li-4"></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      let serchElement = [];
+      const findElementByClass = (rootEl, classEl) => {
+        if (rootEl.hasChildNodes()) {
+          for (let el of rootEl.children) {
+            if (el.className === classEl) {
+              serchElement.push(el);
+              if (serchElement[0].className !== classEl) {
+                serchElement = [];
+                serchElement.push(el);
+              }
+            }
+            findElementByClass(el, classEl);
+          }
+        }
+        return serchElement[0];
+      };
+
+      const rootElement = document.querySelector('#root');
+      console.log(findElementByClass(rootElement, 'content-2'));
+      console.log(findElementByClass(rootElement, 'li-2'));
+    </script>
+  </body>
+</html>
